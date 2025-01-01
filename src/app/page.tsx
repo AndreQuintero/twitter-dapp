@@ -1,7 +1,12 @@
-import { css } from '../../styled-system/css';
+
+import { Hero } from './components/hero';
+import { Container } from './ui/container';
 
 export default function Home() {
   return (
-    <div className={css({ fontSize: "2xl" })}>Hello 🐼!</div>
+    <Container>
+     <Hero />
+    </Container>
+    
   );
 }
