@@ -1,4 +1,4 @@
-import { Introduction } from "@/app/layout/Introduction"
+import { Introduction } from "@/app/layout/introduction"
 import { vstack } from "../../../../styled-system/patterns"
 import { Button } from "@/app/ui/button"
 
