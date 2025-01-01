@@ -35,7 +35,8 @@ export default defineConfig({
         colors: {
           primary: { value: '#0000FF' },
           secondary: { value: '#00CED1' },
-          text: { value: '#010001' }
+          text: { value: '#010001' },
+          label: { value: '#FFF'}
         },
         fonts: {
           body: { value: 'var(--font-poppins)' }
