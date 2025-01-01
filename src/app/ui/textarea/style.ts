@@ -8,6 +8,7 @@ export const textArea = cva({
         padding: '1.2rem',
         fontSize: '2rem',
         resize: 'none',
+        borderRadius: '0.5rem',
         '_focus': {
             border: '2px solid token(colors.primary)',
         },
