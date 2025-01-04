@@ -10,17 +10,16 @@ export const Hero = () => {
     
     const { connectAccount, isConnected } = useAccount(useStore)
     const accountId = useStore(state => state.id)
-    const { getProfile: _getProfile } = useProfile(accountId)
+    const { getProfile: _getProfile } = useProfile(useStore, useAccount)
 
-    useEffect( () => {
-        if(isConnected()) {
-           getProfile()  
-        }
-    }, [accountId])
+   useEffect(() => {
+    if(isConnected()) {
+        getProfile()
+    }
+   }, [accountId])
         
     const getProfile = async () => {
-        const profile = await _getProfile()
-        console.log(profile)
+        await _getProfile()
     }
     
 
