@@ -1,24 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import detectEthereumProvider from "@metamask/detect-provider"
-import { useEffect, useState } from "react"
 import { web3Instance } from "../services/web3-client"
 import { UseStoreType } from "../store"
+import { useShallow } from "zustand/shallow"
 
 export const useAccount = (useStore: UseStoreType) => {
-    const [accountId, setAccountId] = useState<string>('')
-    const setAccount = useStore( state => state.setAccountId)
-    useEffect( () => {
-        if(isConnected()) {
-             setAccount(accountId)
-        }
-    }, [accountId])
+    const { accountId, setAccount } = useStore(useShallow(state => ({
+        accountId: state.id,
+        setAccount: state.setAccountId
+    })))
+   
 
     async function connectAccount() {
         const provider = await detectEthereumProvider()
         if (provider) {
 
             const accounts = await web3Instance().requestAccounts()
-            setAccountId(accounts[0])
+            setAccount(accounts[0])
 
         } else {
             alert("please, install metamask to login")
