@@ -4,10 +4,12 @@ import { vstack } from "../../../../styled-system/patterns"
 import { Button } from "@/app/ui/button"
 import { useEffect } from "react"
 import { useAccount, useProfile } from "@/app/hooks"
+import { useStore } from "@/app/store"
 
 export const Hero = () => {
     
-    const { accountId, connectAccount, isConnected } = useAccount()
+    const { connectAccount, isConnected } = useAccount(useStore)
+    const accountId = useStore(state => state.id)
     const { getProfile: _getProfile } = useProfile(accountId)
 
     useEffect( () => {
