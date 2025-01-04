@@ -1,14 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import detectEthereumProvider from "@metamask/detect-provider"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { web3Instance } from "../services/web3-client"
+import { UseStoreType } from "../store"
 
-export const useAccount = () => {
+export const useAccount = (useStore: UseStoreType) => {
     const [accountId, setAccountId] = useState<string>('')
-    
-    const connectAccount = async () => {
+    const setAccount = useStore( state => state.setAccountId)
+    useEffect( () => {
+        if(isConnected()) {
+             setAccount(accountId)
+        }
+    }, [accountId])
+
+    async function connectAccount() {
         const provider = await detectEthereumProvider()
-        if(provider) {
-            
+        if (provider) {
+
             const accounts = await web3Instance().requestAccounts()
             setAccountId(accounts[0])
 
