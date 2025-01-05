@@ -16,13 +16,23 @@ export const useTweet = (useStore: UseStoreType, useAccount: UseAccount) => {
         const contract = getContract()
         try {
             const tweets: TweetBody[] = await contract.methods.getALLTweets(accountId).call({from : accountId})
-            console.log(tweets)
             setTweets(tweets)
         } catch(e) {
             console.log(e)
         }
     }
+
+    const postTweets =  async (message: string) => {
+        const contract = getContract()
+        try {
+            await contract.methods.createTweet(message).send({from: accountId})
+            post(message)
+        } catch(e) {
+            console.log(e)
+        }
+    } 
     return {
-        getTweets
+        getTweets,
+        postTweets
     }
 }
