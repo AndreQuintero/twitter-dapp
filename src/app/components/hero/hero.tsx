@@ -13,15 +13,15 @@ export const Hero = () => {
     const { getProfile: _getProfile } = useProfile(useStore, useAccount)
 
    useEffect(() => {
-    if(isConnected()) {
-        getProfile()
-    }
-   }, [accountId])
-        
     const getProfile = async () => {
         await _getProfile()
     }
     
+    if(isConnected()) {
+        getProfile()
+    }
+   }, [accountId, isConnected, _getProfile])
+        
 
     return (
         <div className={vstack({gap: '2rem'})}>

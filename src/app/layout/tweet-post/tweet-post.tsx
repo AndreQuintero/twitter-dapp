@@ -10,8 +10,7 @@ type TweetPostProps = {
 
 export const TweetPost = ({ characterLimit = 280 }:TweetPostProps) => {
      const textRef = useRef<TextAreaRefProps>(null)
-     const [message, setMessage] = useState('');
-
+     const [message, setMessage] = useState('')
     return (
         <div className={css({mt: '1.6rem', width: '100%'})}>
             <TextArea maxLength={characterLimit} onChange={(e) => setMessage(e.target.value)} placeholder="What's on your mind?" ref={textRef}/>

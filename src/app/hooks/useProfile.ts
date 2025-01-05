@@ -36,12 +36,12 @@ export const useProfile = (useStore: UseStoreType, useAccount: UseAccount) => {
         }
      }
 
-     const profileExists = () => {
+     const profileExists =  useCallback(() => {
        if(isConnected() && displayName !== '') {
             return true
        }
        return false
-     }
+     }, [displayName, isConnected])
 
      return {
         getProfile,
