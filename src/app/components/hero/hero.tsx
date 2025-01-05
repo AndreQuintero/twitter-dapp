@@ -1,5 +1,5 @@
 "use client"
-import { Introduction } from "@/app/layout/introduction"
+import { Greetings } from "@/app/layout/greetings"
 import { vstack } from "../../../../styled-system/patterns"
 import { Button } from "@/app/ui/button"
 import { useEffect } from "react"
@@ -25,7 +25,7 @@ export const Hero = () => {
 
     return (
         <div className={vstack({gap: '2rem'})}>
-            <Introduction title='Twitter dApp' subtitle='A descentralized app to post your own tweets on sepolia blockchain.'/>
+            <Greetings title='Twitter dApp' subtitle='A descentralized app to post your own tweets on sepolia blockchain.'/>
             <Button onClick={connectAccount} variant="primary" size="large">{isConnected() ? accountId : 'Connect to Metamask'}</Button>
         </div>
     )
