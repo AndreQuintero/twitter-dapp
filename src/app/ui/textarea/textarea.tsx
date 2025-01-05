@@ -4,6 +4,7 @@ import * as S from './style'
 
 export type TextAreaRefProps = {
     getValue: () => string;
+    reset: () => void
 };
 
 type TextAreaProps = {
@@ -22,12 +23,16 @@ export const TextArea = forwardRef<TextAreaRefProps, TextAreaProps>(
             getValue() {
                 return value;
             },
+            reset(){
+                setValue('')
+            }
         }));
 
         return (
             <textarea
                 className={S.textArea()} // Assuming S.textArea is defined elsewhere
                 {...props}
+                value={value}
                 onChange={(e) => {
                     setValue(e.target.value)
                     !!onChange && onChange(e)
